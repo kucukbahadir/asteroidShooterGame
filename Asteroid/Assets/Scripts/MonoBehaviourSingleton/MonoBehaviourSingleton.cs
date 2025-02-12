@@ -10,7 +10,7 @@ public class MonoBehaviourSingleton<T> : MonoBehaviour
     {
         if (Instance != null)
         {
-            Debug.LogWarning("The PlayerInputHandler already exist in the scene " + gameObject.name);
+            Debug.LogWarning($"The {gameObject.GetComponent<T>()} already exist in the scene " + gameObject.name);
             Destroy(gameObject);
         }
         
