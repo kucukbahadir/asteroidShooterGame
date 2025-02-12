@@ -4,5 +4,6 @@ using UnityEngine;
 public class Question : ScriptableObject
 {
     public string question;
-    public Answer[] answers;
+    public Answer answersA;
+    public Answer answersB;
 }
