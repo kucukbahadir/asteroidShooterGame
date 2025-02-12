@@ -11,14 +11,11 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (Instance != null)
         {
-            Instance = this;
-        }
-        else
-        {
-            Debug.LogWarning("The PlayerInputHandler already exist in the scene");
+            Debug.LogWarning("The PlayerInputHandler already exist in the scene " + gameObject.name);
             Destroy(gameObject);
         }
-        
+
+        Instance = this;        
         _playerInputMap = new PlayerInputMap();
     }
 
