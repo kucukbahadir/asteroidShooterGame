@@ -1,11 +1,12 @@
 using System.Collections;
+using System.Collections.Generic; // Ensure this is included for Queue<T>
 using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] asteroidPrefabs; // Prefab list
     [SerializeField] private int maxAsteroids = 5; // Max asteroids allowed at the same time
-    [SerializeField] private float spawnRadius = 5f;   
+    [SerializeField] private float spawnRadius = 5f;
     [SerializeField] private float minSpawnDelay = 1f;
     [SerializeField] private float maxSpawnDelay = 3f;
     [SerializeField] private float minLifetime = 4f;
@@ -14,10 +15,22 @@ public class AsteroidSpawner : MonoBehaviour
     public bool stopSpawning = false; // Toggle for stopping/resuming asteroid spawning
 
     private int currentAsteroids = 0; // Track active asteroids
+    private Queue<GameObject> asteroidPool; // Declare the queue
 
     private void Start()
     {
-        // Start multiple coroutines to ensure multiple asteroids spawn over time
+        // Initialize the pool properly inside Start()
+        asteroidPool = new Queue<GameObject>();
+
+        // Fill the pool with inactive asteroids
+        for (int i = 0; i < maxAsteroids; i++)
+        {
+            GameObject asteroid = Instantiate(asteroidPrefabs[Random.Range(0, asteroidPrefabs.Length)]);
+            asteroid.SetActive(false);
+            asteroidPool.Enqueue(asteroid);
+        }
+
+        // Start spawning coroutines
         for (int i = 0; i < maxAsteroids; i++)
         {
             StartCoroutine(SpawnAsteroidRoutine());
@@ -28,13 +41,12 @@ public class AsteroidSpawner : MonoBehaviour
     {
         while (true)
         {
-            // Wait while spawning is paused
             while (stopSpawning)
             {
                 yield return null;
             }
 
-            if (currentAsteroids < maxAsteroids)
+            if (currentAsteroids < maxAsteroids && asteroidPool.Count > 0)
             {
                 SpawnAsteroid();
             }
@@ -46,17 +58,16 @@ public class AsteroidSpawner : MonoBehaviour
 
     private void SpawnAsteroid()
     {
-        if (asteroidPrefabs.Length == 0) return; // Prevent errors
+        if (asteroidPool.Count == 0) return; // Prevent errors if the pool is empty
 
-        // Pick a random prefab
-        GameObject prefab = asteroidPrefabs[Random.Range(0, asteroidPrefabs.Length)];
+        GameObject asteroid = asteroidPool.Dequeue();
+        asteroid.SetActive(true);
 
-        // Instantiate at a random position around this object
+        // Set random spawn position
         Vector3 spawnPosition = transform.position + (Vector3)Random.insideUnitCircle * spawnRadius;
-        GameObject asteroid = Instantiate(prefab, spawnPosition, Quaternion.identity);
-        currentAsteroids++;
+        asteroid.transform.position = spawnPosition;
 
-        // Start moving the asteroid
+        currentAsteroids++;
         StartCoroutine(MoveAsteroid(asteroid));
     }
 
@@ -74,7 +85,8 @@ public class AsteroidSpawner : MonoBehaviour
             yield return null;
         }
 
-        Destroy(asteroid);
+        asteroid.SetActive(false); // Return to pool
+        asteroidPool.Enqueue(asteroid);
         currentAsteroids--;
     }
 }
