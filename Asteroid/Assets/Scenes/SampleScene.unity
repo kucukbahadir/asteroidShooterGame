@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -250,12 +250,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,6 +336,9 @@ Light:
   m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!4 &410087041
 Transform:
   m_ObjectHideFlags: 0
@@ -423,6 +426,72 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1073407567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1073407569}
+  - component: {fileID: 1073407568}
+  m_Layer: 0
+  m_Name: AsteroidSpawnpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1073407568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073407567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76eb96fc69f1bef4292dca472ae767ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidPrefabs:
+  - {fileID: 8265268651674376162, guid: 21acbf056523ddc45ae6ed455888e74c, type: 3}
+  - {fileID: 5992200392275997865, guid: 87b2a04b7a8007d499e2220c83ebf3f3, type: 3}
+  - {fileID: 6145907563570793379, guid: 419f480444c23064aae4591c16b9eb55, type: 3}
+  - {fileID: 356686633036996004, guid: 355a93825b45e9347babd4a2335accd0, type: 3}
+  - {fileID: 4383895779527819547, guid: 9b2a06cc51853c7448e02074006ef751, type: 3}
+  - {fileID: 2762061424377255176, guid: 4727f007656ecad49b32ae4d4f672151, type: 3}
+  - {fileID: 5750896770104580877, guid: d0def48ece19b8d4a9a4c56394b65ed6, type: 3}
+  - {fileID: 3176706048426851046, guid: df590cb1eb27e774fb296e62e07f0214, type: 3}
+  - {fileID: 2997316518642055249, guid: 61564121e64f7b044981a45709df2c02, type: 3}
+  - {fileID: 6565613134061903884, guid: fd084c7dc64ed9748ba6dad51f822c54, type: 3}
+  - {fileID: 5381572247671937128, guid: bdc05d99927e7b94492ed5f9092c42cf, type: 3}
+  - {fileID: 8128436182958306156, guid: 5b4c9d1900b060641ad4318300f5cc2e, type: 3}
+  - {fileID: 6992982438167116847, guid: ee05dc77271d4b84f9f70a61e9cc06c6, type: 3}
+  - {fileID: 5289192563651128856, guid: 6c2cefa404db0b04a807f40e76ca5a81, type: 3}
+  - {fileID: 4152544616766885432, guid: 37a4a3773432a084596456c2ecb8035a, type: 3}
+  - {fileID: 628196267184445194, guid: 8d3cdc8989c7d2740bc4b722cfbfe1a8, type: 3}
+  maxAsteroids: 16
+  spawnRadius: 5
+  moveSpeed: 2
+  minRespawnTime: 3
+  maxRespawnTime: 6
+--- !u!4 &1073407569
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073407567}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -430,3 +499,4 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
+  - {fileID: 1073407569}
