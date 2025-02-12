@@ -5,12 +5,13 @@ public class MouseController : MonoBehaviour
 {
     [SerializeField] private GameObject mouseControllerDebugPrefab;
     [SerializeField] private bool useDebugPrefab;
-    [SerializeField] private LayerMask debugLayerMask;
 
     private GameObject currentMouseControllerPrefab;
     
     private void Start()
     {
+        if (!useDebugPrefab) return;
+
         currentMouseControllerPrefab = Instantiate(mouseControllerDebugPrefab);
     }
 

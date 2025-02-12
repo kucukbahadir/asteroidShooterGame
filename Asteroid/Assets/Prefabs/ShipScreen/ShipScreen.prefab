@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4938064499562753441}
   - component: {fileID: 2849975425911488070}
   - component: {fileID: 2904583473856417098}
+  - component: {fileID: 8565388030706080331}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -104,6 +105,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8565388030706080331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109013561341554830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb3a8c740baf7a94ab509de18c43faf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionText: {fileID: 2033616009869104362}
+  answerAText: {fileID: 6359894144722168674}
+  answerBText: {fileID: 6054057770568173965}
 --- !u!1 &955169897392330710
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,6 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70a83d6d07c85345b9f44052a56acfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipScreenUI: {fileID: 8565388030706080331}
   questions:
   - {fileID: 11400000, guid: d198542bff1ca63448020e39c048872c, type: 2}
 --- !u!1 &4089330694729676666
