@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c6c29c7f747e404ab33a67f7f275dc3, type: 3}
   m_Name: Question2
   m_EditorClassIdentifier: 
-  question: 
+  question: Which word is missing in this list? bool, int, float
   answersA:
-    answer: 
+    answer: layerMask
     answerIsRight: 0
   answersB:
-    answer: 
-    answerIsRight: 0
+    answer: string
+    answerIsRight: 1

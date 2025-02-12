@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c6c29c7f747e404ab33a67f7f275dc3, type: 3}
   m_Name: Question5
   m_EditorClassIdentifier: 
-  question: 
+  question: "A component in a circuit that slows down the flow of electricity is
+    called a\u2026"
   answersA:
-    answer: 
-    answerIsRight: 0
+    answer: 'Resistor '
+    answerIsRight: 1
   answersB:
-    answer: 
+    answer: Capacitor
     answerIsRight: 0

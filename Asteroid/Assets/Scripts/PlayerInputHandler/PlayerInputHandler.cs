@@ -1,21 +1,13 @@
 using System;
 using UnityEngine;
 
-[DisallowMultipleComponent]
-public class PlayerInputHandler : MonoBehaviour
+public class PlayerInputHandler : MonoBehaviourSingleton<PlayerInputHandler>
 {
-    private static PlayerInputHandler Instance;
     private PlayerInputMap _playerInputMap;
 
-    private void Awake()
+    public override void Awake()
     {
-        if (Instance != null)
-        {
-            Debug.LogWarning("The PlayerInputHandler already exist in the scene " + gameObject.name);
-            Destroy(gameObject);
-        }
-
-        Instance = this;        
+        base.Awake();
         _playerInputMap = new PlayerInputMap();
     }
 
