@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public class MonoBehaviourSingleton<T> : MonoBehaviour
+public class MonoBehaviourSingleton<T>: MonoBehaviour where T : MonoBehaviour
 {
     private static T Instance;
     
