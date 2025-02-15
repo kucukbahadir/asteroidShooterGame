@@ -1,9 +1,13 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class ShipScreen : MonoBehaviour
 {
+    public UnityEvent OnRightAnswer;
+    public UnityEvent OnWrongAnswer;
+
     [SerializeField] private ShipScreenUI shipScreenUI;
     [SerializeField] private Question[] questions;
 
@@ -16,13 +20,23 @@ public class ShipScreen : MonoBehaviour
 
     public void AnswerA()
     {
-        if (!currentQuestion.answersA.answerIsRight) return;
+        if (!currentQuestion.answersA.answerIsRight)
+        {
+            OnWrongAnswer?.Invoke();
+            return;
+        } 
+        OnRightAnswer?.Invoke();
         GetNewQuestion();
     }
 
     public void AnswerB()
     {
-        if (!currentQuestion.answersB.answerIsRight) return;
+        if (!currentQuestion.answersB.answerIsRight)
+        {
+            OnWrongAnswer?.Invoke();
+            return;
+        } 
+        OnRightAnswer?.Invoke();
         GetNewQuestion();
     }
 
