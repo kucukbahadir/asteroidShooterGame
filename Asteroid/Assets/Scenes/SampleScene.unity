@@ -474,9 +474,11 @@ MonoBehaviour:
   - {fileID: 628196267184445194, guid: 8d3cdc8989c7d2740bc4b722cfbfe1a8, type: 3}
   maxAsteroids: 16
   spawnRadius: 5
-  moveSpeed: 2
-  minRespawnTime: 3
-  maxRespawnTime: 6
+  minSpawnDelay: 2
+  maxSpawnDelay: 5
+  minLifetime: 8
+  maxLifetime: 12
+  stopSpawning: 0
 --- !u!4 &1073407569
 Transform:
   m_ObjectHideFlags: 0
@@ -492,6 +494,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1238657503
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
+      propertyPath: m_Name
+      value: Space Ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517384473192112894, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
+      propertyPath: m_Name
+      value: Space Ship
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 64323095177339376, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
+    - {fileID: -6434212223216177213, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
+    - {fileID: -8383124558419344257, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
+    - {fileID: -3798597711559607027, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
+    - {fileID: -3137722172632951806, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
+    - {fileID: -2519092360280523269, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
+    - {fileID: -1558721567721526513, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 29e3ed7faecae2c448de30cfda1c7cf1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -500,3 +570,4 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1073407569}
+  - {fileID: 1238657503}
