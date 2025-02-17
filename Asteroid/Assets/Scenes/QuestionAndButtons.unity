@@ -175,6 +175,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4349792402739865039, guid: 03d4b57aaec9fe941b0b9d55fb274577, type: 3}
+      propertyPath: m_Size.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349792402739865039, guid: 03d4b57aaec9fe941b0b9d55fb274577, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349792402739865039, guid: 03d4b57aaec9fe941b0b9d55fb274577, type: 3}
+      propertyPath: m_Size.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6033078228397623060, guid: 03d4b57aaec9fe941b0b9d55fb274577, type: 3}
       propertyPath: OnButtonInteract.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -263,6 +275,18 @@ PrefabInstance:
     - target: {fileID: 4134686558812320398, guid: 03d4b57aaec9fe941b0b9d55fb274577, type: 3}
       propertyPath: m_Name
       value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349792402739865039, guid: 03d4b57aaec9fe941b0b9d55fb274577, type: 3}
+      propertyPath: m_Size.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349792402739865039, guid: 03d4b57aaec9fe941b0b9d55fb274577, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349792402739865039, guid: 03d4b57aaec9fe941b0b9d55fb274577, type: 3}
+      propertyPath: m_Size.z
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6033078228397623060, guid: 03d4b57aaec9fe941b0b9d55fb274577, type: 3}
       propertyPath: OnButtonInteract.m_PersistentCalls.m_Calls.Array.size
@@ -424,7 +448,7 @@ Transform:
   m_GameObject: {fileID: 821079815}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -3.66}
+  m_LocalPosition: {x: 0, y: 1, z: -3.951}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
