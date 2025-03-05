@@ -1,80 +1,95 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] asteroidPrefabs; // Prefab list
-    [SerializeField] private int maxAsteroids = 5; // Max asteroids allowed at the same time
-    [SerializeField] private float spawnRadius = 5f;   
-    [SerializeField] private float minSpawnDelay = 1f;
-    [SerializeField] private float maxSpawnDelay = 3f;
-    [SerializeField] private float minLifetime = 4f;
-    [SerializeField] private float maxLifetime = 8f;
+    [SerializeField] private GameObject[] asteroidPrefabs;
+    [SerializeField] private int maxAsteroids = 16; // Allow all 16 to be active
+    [SerializeField] private float spawnRadius = 5f;
+    [SerializeField] private float minSpawnDelay = 2f; // Time between meteor storms
+    [SerializeField] private float maxSpawnDelay = 5f;
+    [SerializeField] private float minLifetime = 8f;
+    [SerializeField] private float maxLifetime = 12f;
 
-    public bool stopSpawning = false; // Toggle for stopping/resuming asteroid spawning
+    public bool stopSpawning = false;
 
-    private int currentAsteroids = 0; // Track active asteroids
+    private Queue<GameObject> asteroidPool;
+    private int activeAsteroids = 0;
 
     private void Start()
     {
-        // Start multiple coroutines to ensure multiple asteroids spawn over time
+        asteroidPool = new Queue<GameObject>();
+
+        // Create 16 asteroids in the pool
         for (int i = 0; i < maxAsteroids; i++)
         {
-            StartCoroutine(SpawnAsteroidRoutine());
+            GameObject asteroid = Instantiate(asteroidPrefabs[Random.Range(0, asteroidPrefabs.Length)]);
+            asteroid.SetActive(false);
+            asteroidPool.Enqueue(asteroid);
         }
+
+        // Start the spawning system
+        StartCoroutine(SpawnAsteroidWaves());
     }
 
-    private IEnumerator SpawnAsteroidRoutine()
+    private IEnumerator SpawnAsteroidWaves()
     {
         while (true)
         {
-            // Wait while spawning is paused
             while (stopSpawning)
             {
                 yield return null;
             }
 
-            if (currentAsteroids < maxAsteroids)
+            // Spawn multiple asteroids at once (random 4-8 per wave)
+            int asteroidsToSpawn = Random.Range(4, 9);
+
+            for (int i = 0; i < asteroidsToSpawn; i++)
             {
-                SpawnAsteroid();
+                if (asteroidPool.Count > 0)
+                {
+                    SpawnAsteroid();
+                }
             }
 
-            float waitTime = Random.Range(minSpawnDelay, maxSpawnDelay);
-            yield return new WaitForSeconds(waitTime);
+            // Wait before spawning the next wave (2-5 seconds)
+            yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
         }
     }
 
     private void SpawnAsteroid()
     {
-        if (asteroidPrefabs.Length == 0) return; // Prevent errors
+        if (asteroidPool.Count == 0) return;
 
-        // Pick a random prefab
-        GameObject prefab = asteroidPrefabs[Random.Range(0, asteroidPrefabs.Length)];
+        GameObject asteroid = asteroidPool.Dequeue();
+        asteroid.SetActive(true);
 
-        // Instantiate at a random position around this object
+        // Random spawn position around the spawner
         Vector3 spawnPosition = transform.position + (Vector3)Random.insideUnitCircle * spawnRadius;
-        GameObject asteroid = Instantiate(prefab, spawnPosition, Quaternion.identity);
-        currentAsteroids++;
+        asteroid.transform.position = spawnPosition;
 
-        // Start moving the asteroid
+        activeAsteroids++;
         StartCoroutine(MoveAsteroid(asteroid));
     }
 
     private IEnumerator MoveAsteroid(GameObject asteroid)
     {
-        Vector3 moveDirection = Vector3.forward;
         float lifetime = Random.Range(minLifetime, maxLifetime);
+
         float moveSpeed = Random.Range(10f, 5f);
 
         float timer = 0f;
         while (timer < lifetime)
         {
-            asteroid.transform.position += moveDirection * moveSpeed * Time.deltaTime;
+            asteroid.transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
             timer += Time.deltaTime;
             yield return null;
         }
 
-        Destroy(asteroid);
-        currentAsteroids--;
+        // Return asteroid to pool
+        asteroid.SetActive(false);
+        asteroidPool.Enqueue(asteroid);
+        activeAsteroids--;
     }
 }
